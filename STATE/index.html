@@ -1,0 +1,31 @@
+<!--state는 기본적으로 데이터가 저장되는 곳/React.js 어플에 값이 바뀔 데이터를 담아주기-->
+<!DOCTYPE html>
+<html lang="ko">
+
+<body>
+    <div id="root"></div>
+</body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script> <!--element를 생성해줌-->
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> <!--eact element들을 html body에 둘 수 있도록 해주는 것--> 
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <!--jsx를 react로 바꾸주는 것-->
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        let counter = 0;
+        function countUp() {
+            counter = counter + 1;
+            render();
+        }
+        function render() {
+            ReactDOM.render(<Container />,root); //함수를 부를때 re render 하게끔
+        }
+        const Container = () => (
+            <div>
+                <h3>Total clicks: {counter} </h3>
+                <button onClick={countUp}>Click me</button>  
+                </div> //button에 eventlistner을 연결하는 것
+        ); // react element를 만들고 있는 container안에 이 react element가 또 다른 두개의 react element인 h3와 button을 만듦
+        
+        render();
+
+    </script>
+</html> 
