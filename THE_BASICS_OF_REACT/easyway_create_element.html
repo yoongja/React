@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script> <!--element를 생성해줌-->
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> <!--eact element들을 html body에 둘 수 있도록 해주는 것--> 
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> <!--jsx를 react로 바꾸주는 것-->
+<script type="text/babel">
+    const root = document.getElementById("root");
+    const Title = ()=> (
+        <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
+            Hello I'm a title
+        </h3>
+    ); // Title = () => 이부분이 함수로 만들어 주는 부분 (arrow function)
+    function Button(){
+        return (
+            <button 
+            style={{
+                backgroundColor:"tomato",
+            }}
+            onclick={() =>console.log("im clicked")}
+            >
+            Click me
+            </button>
+        );
+    }
+    const Container = () => (
+        <div>
+            <Title/>
+            <Button/>
+        </div>
+    ); //여러 component들이 합쳐진 구성을 만듦
+    ReactDOM.render(<Container/>,root);
+</script>
+</html> 
