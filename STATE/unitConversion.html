@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<body>
+    <div id="root"></div>
+</body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script> 
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+    <script type="text/babel">
+        const root = document.getElementById("root");
+
+        function App() {
+            const [minutes,setMinutes] = React.useState();
+            const[flipped,setFlipped]=React.useState(false);//flipped의 기본값은 flase
+            const onChange = (event) => { //event발생
+                setMinutes(event.target.value);//target은 방금바뀐 input의 변화를 생각함
+            };
+            const reset = () => setMinutes(0);//minutes 변수의 값을 0으로 만들어줌
+            const onFlip=()=> {
+                reset();
+                setFlipped((current)=>!current)
+            }; //flipped의 결과를 반대로 해줌 / !flipped
+            return (
+                <div> 
+                    <h1 className="hi">Super Converter </h1> 
+                    <label htmlFor="minutes">Minutes</label>
+                    <input
+                        value={flipped ? minutes*60 : minutes} //value={minutes}를 통해서 event가 발생했을 떄, 값을 업데이트해주고, ui에 보여주는 부분
+                        id="minutes"
+                        placeholder="Minutes"
+                        type="number"
+                        onChange={onChange}//변화를 리스닝하여 onChange -> 정의한 onChange함수를 실행시킴
+                        disabled={flipped}
+                        />
+                    <div>
+                    <label htmlFor="hours">Hours</label>
+                    <input 
+                    value={flipped ? minutes : Math.round(minutes / 60)} //flipped가 True이면 그냥의 Minutes을 보여주고 아니면 계산된 값을 보여줌
+                        id = "hours" 
+                        placeholder="Hours"  //input 안에서 보이는 값의 내용 
+                        type="number"
+                        disabled={!flipped}
+                        onChange={onChange}
+                        />
+                    </div>
+                    <button onClick={reset}>Reset</button>
+                    <button onClick={onFlip}>{flipped ? "Turn back" : "Invert"}</button>
+                </div> //jsx문법을 사용하는 것이여서 class,for이 아닌 className , htmlFor을 사용한다.
+            ); 
+        } 
+        
+        ReactDOM.render(<App/>,root);
+
+    </script>
+</html> 
