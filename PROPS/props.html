@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<body>
+    <div id="root"></div>
+</body>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script> 
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script> 
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+    <script type="text/babel">
+    function Btn(props){ //Btn이 받는 유일한 인자 , 두번째 속성은 없다 ! //short cut 으로는 props 대신{banana}로 적어서 아래에서 바로 banana 적용가능
+        console.log(props);
+        return(
+            <button 
+                style={{
+                    backgroundColor:"tomato",
+                    color:"white",
+                    padding:"10px 20px",
+                    border:0,
+                    borderRadius:10,
+                }}
+            >
+            {props.banana}
+            </button> //이속성으로 인해 동일한 속성들이 다른 이름으로 표시됨
+        );
+    }
+    
+    function App() {
+        return (
+            <div>
+                <Btn banana="Save Changes" />
+                <Btn banana="Continue" />
+            </div>
+        );
+    }
+    const root = document.getElementById("root");
+            ReactDOM.render(<App/>,root);
+
+    </script>
+</html> 
