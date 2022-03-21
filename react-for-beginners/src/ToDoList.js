@@ -28,7 +28,7 @@ function ToDoList() {
             <li key={index}>{item}</li>))}
         </ul> 
         
-    </div> //map의 첫번째 argument인 item은 toDo를 의미한다. todos를 가져와서 map 함수를 통해 item들을 li로 바꿔줌
+    </div> //map의 첫번째 argument인 item은 toDo를 의미한다. todos를 가져와서 map 함수를 통해 item들을 li로 바꿈
 }
 
 export default ToDoList;
