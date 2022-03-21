@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './ToDoList';
+import App from './CoinTracker';
 
 
 ReactDOM.render(
