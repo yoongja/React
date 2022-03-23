@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import './CoinTracker.css';
 
 //페이지나 앱을 들어왔을 때 로딩 메세지를 보이도록 하기
 function CoinTracker() {
@@ -14,7 +15,7 @@ function CoinTracker() {
     },[])//useEffect를 사용해서 component의 시작시에만 render 되게 해줌
     return (
         <div>
-        <h1>The Coins! {loading ? "" : `(${coins.length})`}</h1>
+        <h1 className={StyleSheet.Title}>The Coins! {loading ? "" : `(${coins.length})`}</h1>
         {loading ? (
           <strong>Loading...</strong>
         ) : (
